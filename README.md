@@ -8,9 +8,9 @@ Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid. Also possible
 - pm2 for running the SSR server
 - ngrok if you want to share your work with colleagues
 
-Now install the framework requirements:
+Now install the framework:
 ```bash
-$ yarn global add vue-cli quasar-cli
+$ yarn global add quasar-cli
 ```
 
 Clone this repo:
@@ -148,5 +148,6 @@ Important local packages
   register-service-worker       1.4.1   
 ```
 #### License
-©2018 to Present D.C. Thompson and Razvan Stoenescu
+©2018 to Present - D.C. Thompson and Razvan Stoenescu
+
 MIT
