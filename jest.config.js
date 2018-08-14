@@ -51,7 +51,7 @@ module.exports =
       '^vue$': 'vue/dist/vue.common.js',
       'src/([^\\.]*)$': '<rootDir>/src/$1.js',
       'src/([^\\.]*).vue$': '<rootDir>/src/$1.vue',
-      '/(.*)\/(.*).vue$/': '$1/$2.vue',
+      '(.*)/(.*).vue$': '<rootDir>/src/$1/$2.vue',
       'quasar': 'quasar-framework/dist/umd/quasar.mat.umd.min.js'
     },
     'transformIgnorePatterns': [
