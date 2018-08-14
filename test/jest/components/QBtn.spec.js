@@ -4,7 +4,7 @@
  */
 
 import { mount, createLocalVue } from '@vue/test-utils'
-import QBUTTON from './QBtn-demo.vue'
+import QBUTTON from './components/QBtn-demo.vue'
 import Quasar, { Qbtn } from 'quasar'
 
 describe('Render, build and wire up a quasar component', () => {
