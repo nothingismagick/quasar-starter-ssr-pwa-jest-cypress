@@ -20,6 +20,10 @@ self.__precacheManifest = [
     "url": "/statics/icons/ms-icon-144x144.png"
   },
   {
+    "revision": "3020c8ac2c2872dec7741e5948520093",
+    "url": "/statics/icons/icon-128x128.png"
+  },
+  {
     "revision": "a13b2bd5261e2df374128df1aab93001",
     "url": "/statics/icons/icon-512x512.png"
   },
@@ -32,20 +36,16 @@ self.__precacheManifest = [
     "url": "/statics/icons/icon-256x256.png"
   },
   {
-    "revision": "8c4120b4e88276badbc808e518572fad",
-    "url": "/statics/icons/icon-192x192.png"
-  },
-  {
-    "revision": "3020c8ac2c2872dec7741e5948520093",
-    "url": "/statics/icons/icon-128x128.png"
-  },
-  {
     "revision": "da2b422e2895b9b9c1782a71b6be9d63",
     "url": "/statics/icons/apple-icon-152x152.png"
   },
   {
     "revision": "efb00e57304380d857603760600da5d5",
     "url": "/statics/icons/favicon-16x16.png"
+  },
+  {
+    "revision": "8c4120b4e88276badbc808e518572fad",
+    "url": "/statics/icons/icon-192x192.png"
   },
   {
     "revision": "2f9d7587924933c1912c342b190b53ca",
@@ -116,7 +116,7 @@ self.__precacheManifest = [
     "url": "/fonts/KFOkCnqEu92Fr1MmgVxIIzQ.e9dbbe8.woff"
   },
   {
-    "revision": "1c2a9768df1be98ce2a974335b158bf4",
+    "revision": "b62644d9efcef1c37389f084c60cf031",
     "url": "/../vue-ssr-client-manifest.json"
   }
 ];

@@ -118,9 +118,43 @@ $ yarn serve:dist:ngrok
 
 > About NGROK: You may want to edit the command in the package.json in order to choose a server region closer to you [us, eu, au, ap]
 
+### Deploy
+
+There are a number of additional scripts here that will help you to deploy a pm2 managed instance of your SSR app. Please consult the pm2 documentation about the description of the individual commands. `pm2 examples` is a great way to find out more about it.
+
+```yml
+deploy:ssr-pm2
+  pm2 start ./dist/ssr-mat/index.js --name quasar-ssr
+
+deploy:ssr-pm2_clusterize
+  pm2 start ./dist/ssr-mat/index.js --name quasar-ssr -i max
+  
+deploy:ssr-pm2_watch
+  pm2 start ./dist/ssr-mat/index.js --name quasar-ssr --watch ./dist/ssr-mat
+
+deploy:ssr-pm2_deep-monitoring
+  pm2 start ./dist/ssr-mat/index.js --name quasar-ssr --deep-monitoring
+  
+deploy:ssr-pm2_restart
+  pm2 restart quasar-ssr
+  
+deploy:ssr-pm2_stop
+  pm2 stop quasar-ssr
+  
+deploy:ssr-pm2_monitor
+  pm2 monitor quasar-ssr
+  
+deploy:ssr-pm2_unmonitor
+  pm2 unmonitor quasar-ssr
+  
+deploy:ssr-pm2_kill
+  pm2 kill  
+```
+
 ## // TODO:
-- [ ] vuex 
+- [ ] vuex example binding
 - [ ] meta
+- [ ] lightweight backend
 
 #### Final Notes:
 Here is the redacted results of running `quasar info` in the project root at the time of the generation of this starter:
