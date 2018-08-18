@@ -15,10 +15,11 @@
   "presets": [
     [
       "@babel/preset-env", {
-      "modules": false,
-      "loose": false,
-      "useBuiltIns": "usage"
-    }
+        "modules": false,
+        "loose": false,
+        "useBuiltIns": "usage",
+        "exclude": [ "transform-classes" ]
+      }
     ]
   ],
   "plugins": [
