@@ -70,40 +70,42 @@ export default {
   data () {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
-      title: 'SSR starter',
+      title: 'SSR starter with Jest and Cypress',
       description: 'A starter kit for building a testing rig'
     }
   },
   methods: {
     openURL
   },
-  meta: {
-    title: 'SSR starter', // sets document title
-    titleTemplate: title => `${title} - My Website`, // optional; sets final title as "`{this.title}` - My Website", useful for multiple level meta
-    meta: {
-      description: { name: 'description', content: 'Page 1' },
-      keywords: { name: 'keywords', content: 'Quasar website' },
-      equiv: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
-      ogTitle: { name: 'og-title', content: 'Landing page'  }
-    },
-    link: {
-      material: { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
-    },
-    script: {
-      ldJson: {
-        type: 'application/ld+json',
-        innerHTML: `{ "@context": "http://schema.org" }`
+  meta() {
+    return {
+      title: this.title, // sets document title
+      titleTemplate: title => `${title} - Quasar v0.17`, // optional; sets final title as "`{this.title}` - My Website", useful for multiple level meta
+      meta: {
+        description: {name: 'description', content: 'Landing Page'},
+        keywords: {name: 'keywords', content: 'Quasar website'},
+        equiv: {'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8'},
+        ogTitle: {name: 'og-title', content: 'Landing page'}
+      },
+      link: {
+        material: {rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'}
+      },
+      script: {
+        ldJson: {
+          type: 'application/ld+json',
+          innerHTML: `{ "@context": "http://schema.org" }`
+        }
+      },
+      htmlAttr: {
+        'xmlns:cc': 'http://creativecommons.org/ns#' // generates <html xmlns:cc="http://creativecommons.org/ns#">
+      },
+      bodyAttr: {
+        'action-scope': 'xyz', // generates <body action-scope="xyz">
+        empty: undefined // generates <body empty>
+      },
+      noscript: {
+        default: 'Here is a where you should inform non-script pages that if they want to hydrate they should enable javascript-'
       }
-    },
-    htmlAttr: {
-      'xmlns:cc': 'http://creativecommons.org/ns#' // generates <html xmlns:cc="http://creativecommons.org/ns#">
-    },
-    bodyAttr: {
-      'action-scope': 'xyz', // generates <body action-scope="xyz">
-      empty: undefined // generates <body empty>
-    },
-    noscript: {
-      default: 'Here is a where you should inform non-script pages that if they want to hydrate they should enable javascript-'
     }
   }
 }
