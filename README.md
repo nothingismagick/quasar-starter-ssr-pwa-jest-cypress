@@ -34,6 +34,12 @@ Please note, this script will increase the amount of memory available to the nod
 
 Also, there have been recent reports that running webpack dev scripts (or any webpack-based commands for that matter) in the IDE can lead to 3x slower initial build time, which likely has to do with the way that Webstorm and VSCode attempt to register new files in the root.
 
+
+### Meta Plugin
+
+There is an example integration of the Quasar Meta Plugin available in `/src/layouts/MyLayout.vue`. It uses some of the examples from the quasar docs, most notably the `titleTemplate`.
+
+
 ### Linting and code style
 This project assumes Standard style of JS. Also it uses an opinionated eslint caching and fixing strategy that you can change in `quasar.conf.js` if it becomes troublesome. There is also a helpful script that can sometimes save your life:
 ```bash
@@ -153,8 +159,10 @@ deploy:ssr-pm2_kill
 
 ## // TODO:
 - [ ] vuex example binding
-- [ ] meta
-- [ ] lightweight backend
+- [ ] firebase branch
+- [ ] hyperdb branch
+- [ ] graphql branch
+
 
 #### Final Notes:
 Here is the redacted results of running `quasar info` in the project root at the time of the generation of this starter:
@@ -164,13 +172,13 @@ NodeJs                          8.11.3
 Global packages                 
   NPM                           5.6.0
   yarn                          1.9.4
-  quasar-cli                    0.17.9
+  quasar-cli                    0.17.11
   vue-cli                       2.9.6
   cordova                       8.0.0
 
 Important local packages        
-  quasar-cli                    0.17.9  
-  quasar-framework              0.17.8  
+  quasar-cli                    0.17.11  
+  quasar-framework              0.17.9  
   quasar-extras                 2.0.5   
   vue                           2.5.17 
   vue-router                    3.0.1   
