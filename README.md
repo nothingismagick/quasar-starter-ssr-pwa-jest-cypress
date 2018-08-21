@@ -159,9 +159,10 @@ deploy:ssr-pm2_kill
 
 ## // TODO:
 - [ ] vuex example binding
-- [ ] firebase branch
-- [ ] hyperdb branch
-- [ ] graphql branch
+- [ ] firebase 
+- [ ] hyperdb 
+- [ ] graphql 
+- [ ] pouchdb using https://github.com/pubkey/rxdb?
 
 
 #### Final Notes:
