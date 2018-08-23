@@ -1,5 +1,5 @@
 {
-  "name": "starter",
+  "name": "ssr-starter-kit",
   "version": "1.0.0",
   "description": "A Quasar Framework app",
   "productName": "Quasar App",
@@ -53,6 +53,7 @@
     "@babel/plugin-transform-runtime": "^7.0.0-beta.56",
     "@babel/preset-env": "^7.0.0-beta.56",
     "@babel/preset-stage-2": "^7.0.0-beta.56",
+    "@babel/types": "^7.0.0-rc.2",
     "@vue/test-utils": "^1.0.0-beta.23",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.1",

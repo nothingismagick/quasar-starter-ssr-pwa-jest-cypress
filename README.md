@@ -5,7 +5,8 @@ Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid. Also possible
  **System prerequisites:**
 - node.js 8 LTS or 10 latest
 - yarn > 1.9 (no guarantees if you prefer to use npm)
-- pm2 for running the SSR server
+- nodemon for running the production SSR server 
+- pm2 for deploying the SSR server in production
 - ngrok if you want to share your work with colleagues
 
 Now install the framework:
@@ -60,6 +61,8 @@ $ yarn test:unit:watch
 #### Unit coverage
 Coverage is set to run automatically at liberal high and low-water marks via the Jest config, and the lcov results can be found in the `/test/coverage` folder. See the "Serving" section below for a quick method to see your coverage results in the browser.
 
+> We have noticed that there is a chance of Babel complaining that it can't find module './comments/inheritedLeadingComments'. Strangely it only happens once, on the first run of a coverage test and if you are using VS Code. Running the tests again will make the error disappear. To be on the safe side, we have added the `@babel/types` repo, which you can discover here: https://babeljs.io/docs/en/next/babel-types.html
+
 #### e2e tests
 The e2e we are using is Cypress, and the config is found at `/cypress.json`. There is a sample test called `init.spec.js`  that will run, but you obviously have to have the dev server running first.
 ```bash
@@ -91,7 +94,7 @@ $ yarn build:ssr
 None of this means anything if you don't serve it to either your localhost (or the world). 
 
 #### SSR & PWA
-To serve your SSR node app and PWA, this starter kit assumes that you have **pm2** preinstalled. You will find your site live at: 
+To serve your SSR node app and PWA, this starter kit assumes that you have **nodemon** preinstalled. You will find your site live at: 
 > `localhost:3000`
 ```bash
 $ yarn serve:ssr
