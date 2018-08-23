@@ -1,8 +1,7 @@
-<template>
-  <div>
-    <span>{{ counter }}</span>
-    <q-btn @click="increment()"></q-btn>
-  </div>
+<template lang="pug">
+  div
+    span {{ counter }}
+    q-btn(@click="increment()")
 </template>
 
 <script>
