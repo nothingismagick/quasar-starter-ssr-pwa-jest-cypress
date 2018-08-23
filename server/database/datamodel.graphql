@@ -1,0 +1,6 @@
+type Link {
+  id: ID! @unique
+  name: String!
+  url: String!
+  icon: String!
+}

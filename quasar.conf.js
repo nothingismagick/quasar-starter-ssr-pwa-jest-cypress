@@ -7,7 +7,8 @@ module.exports = function (ctx) {
     plugins: [
       'i18n',
       'axios',
-      'vuelidate'
+      'vuelidate',
+      'apollo'
     ],
     css: [
       'app.styl'
@@ -29,6 +30,11 @@ module.exports = function (ctx) {
         cfg.module.rules.push({
           test: /\.pug$/,
           loader: 'pug-plain-loader'
+        })
+        cfg.module.rules.push({
+          test: /\.(graphql|gql)$/,
+          loader: 'graphql-tag/loader',
+          exclude: /(node_modules)/
         })
         cfg.module.rules.push({
           enforce: 'pre',

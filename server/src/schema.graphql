@@ -1,0 +1,5 @@
+# import 'Link' from 'generated/prisma.graphql'
+
+type Query {
+  links: [Link!]!
+}

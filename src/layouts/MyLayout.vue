@@ -27,6 +27,9 @@
         q-item(@click.native="openURL('https://twitter.com/quasarframework')")
           q-item-side(icon="rss feed")
           q-item-main(label="Twitter", sublabel="@quasarframework")
+        q-item(v-for="(link, index) in links" :key="index" @click.native="openURL(link.url)")
+          q-item-side(:icon="link.icon")
+          q-item-main(:label="link.name", :sublabel="link.url")
 
     q-page-container
       router-view
@@ -34,6 +37,7 @@
 
 <script>
 import { openURL } from 'quasar'
+import GET_LINKS from '../graphql/queries/links.gql'
 
 export default {
   name: 'MyLayout',
@@ -42,6 +46,11 @@ export default {
       leftDrawerOpen: this.$q.platform.is.desktop,
       title: 'SSR starter with Jest and Cypress',
       description: 'A starter kit for building a testing rig'
+    }
+  },
+  apollo: {
+    links: {
+      query: GET_LINKS
     }
   },
   methods: {

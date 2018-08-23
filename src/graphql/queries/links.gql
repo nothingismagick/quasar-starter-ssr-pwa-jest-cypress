@@ -1,0 +1,7 @@
+query Links {
+  links {
+    name
+    url
+    icon
+  }
+}
