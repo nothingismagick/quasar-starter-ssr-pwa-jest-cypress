@@ -58,7 +58,7 @@ $ yarn db:graphql:serve
 
 #### Deploy a graphql-yoga server with pm2
 ```bash
-$ yarn db:graphql:serve
+$ yarn db:graphql:deploy
 ```
 
 #### Important files
@@ -239,7 +239,7 @@ Important local packages
   register-service-worker       1.4.1   
 ```
 #### Contributors
-@nothingismagick
+@nothingismagick  
 @kevinmarrec
 
 #### License
