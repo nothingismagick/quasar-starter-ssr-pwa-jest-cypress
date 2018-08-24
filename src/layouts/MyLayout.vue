@@ -56,7 +56,7 @@ export default {
   methods: {
     openURL
   },
-  meta() {
+  meta () {
     return {
       title: this.title, // sets document title
       titleTemplate: title => `${title} - Quasar v0.17`, // optional; sets final title as "`{this.title}` - My Website", useful for multiple level meta
