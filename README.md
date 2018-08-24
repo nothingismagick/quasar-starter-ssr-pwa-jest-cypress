@@ -1,7 +1,16 @@
 ![](docs/starter_splash.png)
 
 
-Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid - with rigged and ready to extend DB server. Also possible to be used for SPA development or without SSR. 
+Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid - with rigged and ready to extend DB server. Also possible to be used for SPA development or without SSR.
+
+#### Compatiblity
+This repository uses the latest known module resources known to work with:
+
+```
+  quasar-cli                    0.17.13
+  quasar-framework              0.17.10
+``` 
+
 
 #### :fire: WARNING! :fire:
 >Using this starter assumes familiarity with the command line, git, node, vue, quasar and for the love of your sanity if you do not understand HTML, CSS or JS - then this is going to be much too complicated for you.
@@ -211,7 +220,7 @@ deploy:ssr-pm2_kill
 - [ ] firebase 
 - [ ] hypertable
 - [ ] pouchdb using https://github.com/pubkey/rxdb?
-
+- [ ] docker setup for production use
 
 #### Final Notes:
 Here is the redacted results of running `quasar info` in the project root at the time of the generation of this starter:
@@ -221,18 +230,18 @@ NodeJs                          8.11.3
 Global packages                 
   NPM                           5.6.0
   yarn                          1.9.4
-  quasar-cli                    0.17.11
+  quasar-cli                    0.17.13
   vue-cli                       2.9.6
   cordova                       8.0.0
 
 Important local packages        
-  quasar-cli                    0.17.11  
-  quasar-framework              0.17.9  
-  quasar-extras                 2.0.5   
+  quasar-cli                    0.17.13  
+  quasar-framework              0.17.10  
+  quasar-extras                 2.0.6   
   vue                           2.5.17 
   vue-router                    3.0.1   
   vuex                          3.0.1  
-  @babel/core                   7.0.0-rc.1      
+  @babel/core                   7.0.0-rc.2      
   webpack                       4.16.5  
   webpack-dev-server            3.1.5   
   workbox-webpack-plugin        3.4.1   
