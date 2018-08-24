@@ -89,6 +89,11 @@ $ yarn lint:fix
 ```
 If you are working with a colleague and encountering conditions where linting seems to change depending on OS or workstation, make sure that you don't have different versions of eslint installed globally and that your IDE's really are applying the right eslint settings.
 
+### PUG Html Rendering
+We decided to use PUG (formerly known as Jade) for writing the HTML part of the SFC's. There are a few subtle differences with PUG, notably that you are actually writing less code and using a YML indentation-type of tag closure as opposed the XML type. 
+
+> Check out PUG [mixins](https://pugjs.org/language/mixins.html). Used properly, they are amazing!!! 
+
 ## Testing
 So you can see the website in your browser, but are you sure everything is working? This starter kit comes pre-rigged with Jest and Cypress as well as a highly volatile `.babelrc` configuration that includes all of the necessary babel modules. So if something breaks in like ten days when Babel releases a new beta, you are wise to make sure your Babel is configured correctly!
 
