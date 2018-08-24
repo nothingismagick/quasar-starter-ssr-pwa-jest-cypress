@@ -1,7 +1,8 @@
 {
   "name": "server",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "serve:graphql": "nodemon src/index.js",
+    "deploy:graphql": "pm2 start src/index.js --name quasar-graphql",
     "debug": "nodemon --inspect src/index.js"
   },
   "nodemonConfig": {

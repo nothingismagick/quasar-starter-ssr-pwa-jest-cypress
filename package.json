@@ -7,8 +7,13 @@
   "author": "D.C. Thompson",
   "private": true,
   "scripts": {
+    "init": "yarn && cd server && yarn",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
+    "db:prisma:init": "cd server && prisma login && prisma deploy",
+    "db:prisma:deploy": "cd server && prisma deploy",
+    "db:graphql:serve": "cd server && yarn serve:graphql",
+    "db:graphql:deploy": "cd server && yarn deploy:graphql",
     "dev:spa": "NODE_OPTIONS=--max_old_space_size=4096 DEBUG=v8:* quasar dev -m spa",
     "dev:ssr": "NODE_OPTIONS=--max_old_space_size=4096 DEBUG=v8:* quasar dev -m ssr",
     "test:unit": "ENV=test jest",

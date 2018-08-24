@@ -1,32 +1,73 @@
-# quasar-starter-ssr-pwa-jest-cypress
+![](docs/starter_splash.png)
 
-Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid. Also possible to be used for SPA development or without SSR.
+
+Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid - with rigged and ready to extend DB server. Also possible to be used for SPA development or without SSR. 
+
+#### :fire: WARNING! :fire:
+>Using this starter assumes familiarity with the command line, git, node, vue, quasar and for the love of your sanity if you do not understand HTML, CSS or JS - then this is going to be much too complicated for you.
  
  **System prerequisites:**
+- pretested on windows and mac
+- linux will obviously work too
 - node.js 8 LTS or 10 latest
 - yarn > 1.9 (no guarantees if you prefer to use npm)
 - nodemon for running the production SSR server 
 - pm2 for deploying the SSR server in production
 - ngrok if you want to share your work with colleagues
 
-Now install the framework:
-```bash
-$ yarn global add quasar-cli
-```
-
 Clone this repo:
 ```bash
 $ git clone git@github.com:nothingismagick/quasar-starter-ssr-pwa-jest-cypress.git example
 $ cd example
 $ yarn
+# or if you want to install a database as well, eg:
+$ git checkout graphql-prisma && yarn && cd server && yarn
 ```
 
 ## Get to work
-There are a number of scripts available in the `/package.json` file that should make your life a little easier when working. Of course normal CLI commands like `quasar dev` will still work, but using this approach is a good practice to get into - especially if you plan to use a CI pipeline.
+There are a number of scripts available in the `/package.json` file that should make your life a little easier when working. Of course normal CLI commands like `quasar dev` will still work, but power users of quasar swear by script invocation - especially if you plan to use a CI pipeline.
+
+## Backend
+We will maintain a number of branches in this repository that  allow you to choose the backend that you prefer:
+- GraphQL with Prisma and Apollo (Working)
+- Firebase (Coming Soon)
+- hypertable (Help Wanted)
+- pouchdb (Help Wanted)
+
+### GraphQL
+If you have never used GraphQL before, then we recommend that you [follow this entire tutorial](https://www.howtographql.com/graphql-js/0-introduction/). We are using the free service provided by Prisma to create a dynamic database proxy and running a local graphql-yoga server that is based on express and apollo.
+
+#### Prisma Cloud Setup
+First of all, make sure that you are on the right branch. You should have checked out `graphql-prisma`.
+
+To get this all up and running, you will first need to create a free account at Prisma Cloud: https://app.prisma.io/login (You can use your Github account to make it easier.) After you have logged in, go to the `settings` page and copy the "Slug" - you will need this for the `.env` file you are about to make.
+
+Copy or rename the file `/server/.env.template` to `/server/.env` and replace `YOUR_ACCOUNT_SLUG` with the slug you were given by the prisma app.
+
+Now you can initialise prisma with a login & deploy.
+```bash
+$ yarn db:prisma:init
+```
+
+It is really worthwhile to check out the playground, because you can actually modify your schema there!
+
+#### Serve a graphql-yoga server with nodemon
+```bash
+$ yarn db:graphql:serve
+```
+
+#### Deploy a graphql-yoga server with pm2
+```bash
+$ yarn db:graphql:serve
+```
+
+#### Important files
+- server/database/datamodel.graphql
+- server/database/seed.graphql
+- src/layouts/MyLayout.vue
 
 ## Developing
-To make an ssr version of this starter with hot-reloading webpack at
-> `localhost:8000`
+To make an ssr version of this starter with hot-reloading webpack at `localhost:8000`, do this:
 ```bash
 $ yarn dev:ssr
 ```
@@ -163,8 +204,7 @@ deploy:ssr-pm2_kill
 ## // TODO:
 - [ ] vuex example binding
 - [ ] firebase 
-- [ ] hyperdb 
-- [ ] graphql 
+- [ ] hypertable
 - [ ] pouchdb using https://github.com/pubkey/rxdb?
 
 
@@ -193,6 +233,10 @@ Important local packages
   workbox-webpack-plugin        3.4.1   
   register-service-worker       1.4.1   
 ```
+#### Contributors
+@nothingismagick
+@kevinmarrec
+
 #### License
 ©2018 to Present - D.C. Thompson and Razvan Stoenescu
 
