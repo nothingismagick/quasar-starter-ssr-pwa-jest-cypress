@@ -7,6 +7,7 @@ module.exports = function (ctx) {
     plugins: [
       'i18n',
       'axios',
+      'feathers-auth',
       'vuelidate'
     ],
     css: [
@@ -25,6 +26,11 @@ module.exports = function (ctx) {
       gzip: true,
       analyze: true,
       // extractCSS: false,
+      env: {
+        API_BASE_URL: ctx.dev
+          ? JSON.stringify('http://localhost:3030')
+          : JSON.stringify('http://api.example.com')
+      },
       extendWebpack (cfg) {
         cfg.module.rules.push({
           test: /\.pug$/,
@@ -59,6 +65,8 @@ module.exports = function (ctx) {
         'QToolbarTitle',
         'QBtn',
         'QIcon',
+        'QInput',
+        'QCheckbox',
         'QList',
         'QListHeader',
         'QItem',

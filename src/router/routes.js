@@ -4,7 +4,21 @@ const routes = [
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', name: 'home', component: () => import('pages/Index.vue') },
+      { path: 'login', name: 'login', component: () => import('pages/Login.vue') }
+    ]
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('layouts/MyLayout.vue'),
+    meta: {requiresAuth: true, requiresAdmin: true},
+    children: [
+      {
+        path: 'users',
+        name: 'users',
+        component: () => import('pages/admin/Users.vue')
+      }
     ]
   }
 ]

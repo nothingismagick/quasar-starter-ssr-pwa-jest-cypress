@@ -38,6 +38,9 @@
     "@babel/core": "^7.0.0-beta.56",
     "@babel/runtime": "^7.0.0-beta.56",
     "axios": "^0.18.0",
+    "@feathersjs/client": "^3.5.4",
+    "feathers-vuex": "^1.4.8",
+    "socket.io-client": "^2.1.1",
     "vue-i18n": "^7.3.3",
     "vuelidate": "^0.7.4",
     "vuex": "^3.0.1"
