@@ -25,6 +25,8 @@
     "build:ssr": "quasar build -m ssr",
     "serve:spa": "quasar serve ./dist/spa-mat --port 3000",
     "serve:ssr": "nodemon node ./dist/ssr-mat/index.js",
+    "deploy:ssr-now": "cd dist/ssr-mat && now",
+    "deploy:graphql-now": "cd server/src && now",
     "deploy:ssr-pm2": "pm2 start ./dist/ssr-mat/index.js --name quasar-ssr",
     "deploy:ssr-pm2_clusterize": "pm2 start ./dist/ssr-mat/index.js --name quasar-ssr -i max",
     "deploy:ssr-pm2_watch": "pm2 start ./dist/ssr-mat/index.js --name quasar-ssr --watch ./dist/ssr-mat",

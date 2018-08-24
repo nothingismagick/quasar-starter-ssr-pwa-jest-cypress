@@ -182,9 +182,29 @@ $ yarn serve:dist:ngrok
 
 > About NGROK: You may want to edit the command in the package.json in order to choose a server region closer to you [us, eu, au, ap]
 
-### Deploy
+## Deploy
+Deployment is one of the trickiest things to get right, and is also why a lot of starter kits don't go into it. We'll try that here: 
 
-There are a number of additional scripts here that will help you to deploy a pm2 managed instance of your SSR app. Please consult the pm2 documentation about the description of the individual commands. `pm2 examples` is a great way to find out more about it.
+#### Deploying with Now.sh
+Deploying with [Now](https://zeit.co/now) is a breeze. All you need to do is to follow their [installation instructions](https://zeit.co/now#get-started). They recommend downloading "Now Desktop" but you can skip that and directly install the Now CLI:
+
+```bash
+$ yarn global add now
+$ now login
+$ yarn deploy:ssr-now
+# And if you want to serve your graphql too:
+$ yarn deploy:graphql-now
+```
+
+> You might want to use a "now alias" or connect your domain to Now - or even look into automatic deployment with [their Github integration](https://zeit.co/blog/now-for-github).
+
+`Now.sh` will install the dependencies automatically then run `$ run start`. Your website will be up and running on an HTTPS connection in a matter of seconds!
+
+### Deploying with Docker
+Coming soon!
+ 
+### Roll your own
+Of course you can do this with your own VPS, on your LAN or even AWS. Setting up that kind of stuff goes beyond what we can cover here, but we have some set up a number of additional scripts here that will help you to deploy a pm2 managed instance of your SSR app. Please consult the pm2 documentation about the description of the individual commands. `pm2 examples` is a great way to find out more about it.
 
 ```yml
 deploy:ssr-pm2
