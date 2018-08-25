@@ -1,18 +1,28 @@
-# quasar-starter-ssr-pwa-jest-cypress
+![](docs/starter_splash.png)
 
-Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid. Also possible to be used for SPA development or without SSR.
- 
- **System prerequisites:**
+
+Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid - with rigged and ready to extend DB server. Also possible to be used for SPA development or without SSR.
+
+#### Compatiblity
+This repository uses the latest known module resources known to work with:
+
+```
+  quasar-cli                    0.17.13
+  quasar-framework              0.17.10
+```
+
+
+#### :fire: WARNING! :fire:
+>Using this starter assumes familiarity with the command line, git, node, vue, quasar and for the love of your sanity if you do not understand HTML, CSS or JS - then this is going to be much too complicated for you.
+
+**System prerequisites:**
+- pretested on windows and mac
+- linux will obviously work too
 - node.js 8 LTS or 10 latest
 - yarn > 1.9 (no guarantees if you prefer to use npm)
-- nodemon for running the production SSR server 
+- nodemon for running the production SSR server
 - pm2 for deploying the SSR server in production
 - ngrok if you want to share your work with colleagues
-
-Now install the framework:
-```bash
-$ yarn global add quasar-cli
-```
 
 Clone this repo:
 ```bash
@@ -22,11 +32,17 @@ $ yarn
 ```
 
 ## Get to work
-There are a number of scripts available in the `/package.json` file that should make your life a little easier when working. Of course normal CLI commands like `quasar dev` will still work, but using this approach is a good practice to get into - especially if you plan to use a CI pipeline.
+There are a number of scripts available in the `/package.json` file that should make your life a little easier when working. Of course normal CLI commands like `quasar dev` will still work, but power users of quasar swear by script invocation - especially if you plan to use a CI pipeline.
+
+## Backend
+We will maintain a number of branches in this repository that  allow you to choose the backend that you prefer:
+- GraphQL with Prisma and Apollo (Working on `graphql-prisma` branch)
+- Firebase (Coming Soon)
+- hypertable (Help Wanted)
+- pouchdb (Help Wanted)
 
 ## Developing
-To make an ssr version of this starter with hot-reloading webpack at
-> `localhost:8000`
+To make an ssr version of this starter with hot-reloading webpack at `localhost:8000`, do this:
 ```bash
 $ yarn dev:ssr
 ```
@@ -47,6 +63,11 @@ This project assumes Standard style of JS. Also it uses an opinionated eslint ca
 $ yarn lint:fix
 ```
 If you are working with a colleague and encountering conditions where linting seems to change depending on OS or workstation, make sure that you don't have different versions of eslint installed globally and that your IDE's really are applying the right eslint settings.
+
+### PUG Html Rendering
+We decided to use PUG (formerly known as Jade) for writing the HTML part of the SFC's. There are a few subtle differences with PUG, notably that you are actually writing less code and using a YML indentation-type of tag closure as opposed the XML type.
+
+> Check out PUG [mixins](https://pugjs.org/language/mixins.html). Used properly, they are amazing !!!
 
 ## Testing
 So you can see the website in your browser, but are you sure everything is working? This starter kit comes pre-rigged with Jest and Cypress as well as a highly volatile `.babelrc` configuration that includes all of the necessary babel modules. So if something breaks in like ten days when Babel releases a new beta, you are wise to make sure your Babel is configured correctly!
@@ -84,17 +105,17 @@ To see your results you will need to serve the generated artifact. To do that se
 When you build your project, this starter will automatically run and build the webpack-bundle-analyzer that you can find at `http://localhost:8888` - in order to [modify its configuration](https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin), you will need to create an appropriate object in `/quasar.conf.js` at `build.analyze`. If you want to turn it off, just comment out `analyze: true,`.
 
 ## Building
-To build your SSR and PWA use this command. It places the artifacts at 
+To build your SSR and PWA use this command. It places the artifacts at:
 > `/dist/ssr-mat`
 ```bash
 $ yarn build:ssr
 ```
 
 ## Serving
-None of this means anything if you don't serve it to either your localhost (or the world). 
+None of this means anything if you don't serve it to either your localhost (or the world).
 
 #### SSR & PWA
-To serve your SSR node app and PWA, this starter kit assumes that you have **nodemon** preinstalled. You will find your site live at: 
+To serve your SSR node app and PWA, this starter kit assumes that you have **nodemon** preinstalled. You will find your site live at:
 > `localhost:3000`
 ```bash
 $ yarn serve:ssr
@@ -127,9 +148,27 @@ $ yarn serve:dist:ngrok
 
 > About NGROK: You may want to edit the command in the package.json in order to choose a server region closer to you [us, eu, au, ap]
 
-### Deploy
+## Deploy
+Deployment is one of the trickiest things to get right, and is also why a lot of starter kits don't go into it. We'll try that here:
 
-There are a number of additional scripts here that will help you to deploy a pm2 managed instance of your SSR app. Please consult the pm2 documentation about the description of the individual commands. `pm2 examples` is a great way to find out more about it.
+#### Deploying with Now.sh
+Deploying with [Now](https://zeit.co/now) is a breeze. All you need to do is to follow their [installation instructions](https://zeit.co/now#get-started). They recommend downloading "Now Desktop" but you can skip that and directly install the Now CLI:
+
+```bash
+$ yarn global add now
+$ now login
+$ yarn deploy:ssr-now
+```
+
+> You might want to use a "now alias" or connect your domain to Now - or even look into automatic deployment with [their Github integration](https://zeit.co/blog/now-for-github).
+
+`Now.sh` will install the dependencies automatically then run `$ run start`. Your website will be up and running on an HTTPS connection in a matter of seconds!
+
+### Deploying with Docker
+Coming soon!
+
+### Roll your own
+Of course you can do this with your own VPS, on your LAN or even AWS. Setting up that kind of stuff goes beyond what we can cover here, but we have some set up a number of additional scripts here that will help you to deploy a pm2 managed instance of your SSR app. Please consult the pm2 documentation about the description of the individual commands. `pm2 examples` is a great way to find out more about it.
 
 ```yml
 deploy:ssr-pm2
@@ -137,62 +176,64 @@ deploy:ssr-pm2
 
 deploy:ssr-pm2_clusterize
   pm2 start ./dist/ssr-mat/index.js --name quasar-ssr -i max
-  
+
 deploy:ssr-pm2_watch
   pm2 start ./dist/ssr-mat/index.js --name quasar-ssr --watch ./dist/ssr-mat
 
 deploy:ssr-pm2_deep-monitoring
   pm2 start ./dist/ssr-mat/index.js --name quasar-ssr --deep-monitoring
-  
+
 deploy:ssr-pm2_restart
   pm2 restart quasar-ssr
-  
+
 deploy:ssr-pm2_stop
   pm2 stop quasar-ssr
-  
+
 deploy:ssr-pm2_monitor
   pm2 monitor quasar-ssr
-  
+
 deploy:ssr-pm2_unmonitor
   pm2 unmonitor quasar-ssr
-  
+
 deploy:ssr-pm2_kill
-  pm2 kill  
+  pm2 kill
 ```
 
 ## // TODO:
 - [ ] vuex example binding
-- [ ] firebase 
-- [ ] hyperdb 
-- [ ] graphql 
+- [ ] firebase
+- [ ] hypertable
 - [ ] pouchdb using https://github.com/pubkey/rxdb?
-
+- [ ] docker setup for production use
 
 #### Final Notes:
 Here is the redacted results of running `quasar info` in the project root at the time of the generation of this starter:
 ```
 NodeJs                          8.11.3
 
-Global packages                 
+Global packages
   NPM                           5.6.0
   yarn                          1.9.4
-  quasar-cli                    0.17.11
+  quasar-cli                    0.17.13
   vue-cli                       2.9.6
-  cordova                       8.0.0
 
-Important local packages        
-  quasar-cli                    0.17.11  
-  quasar-framework              0.17.9  
-  quasar-extras                 2.0.5   
-  vue                           2.5.17 
-  vue-router                    3.0.1   
-  vuex                          3.0.1  
-  @babel/core                   7.0.0-rc.1      
-  webpack                       4.16.5  
-  webpack-dev-server            3.1.5   
-  workbox-webpack-plugin        3.4.1   
-  register-service-worker       1.4.1   
+Important local packages
+  quasar-cli                    0.17.13
+  quasar-framework              0.17.10
+  quasar-extras                 2.0.6
+  vue                           2.5.17
+  vue-router                    3.0.1
+  vuex                          3.0.1
+  @babel/core                   7.0.0-rc.3
+  webpack                       4.16.5
+  webpack-dev-server            3.1.5
+  workbox-webpack-plugin        3.4.1
+  register-service-worker       1.4.1
 ```
+#### Contributors
+@nothingismagick  
+@kevinmarrec
+
 #### License
 ©2018 to Present - D.C. Thompson and Razvan Stoenescu
 
