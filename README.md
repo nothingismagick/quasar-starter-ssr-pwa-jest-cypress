@@ -29,8 +29,10 @@ Clone this repo:
 $ git clone git@github.com:nothingismagick/quasar-starter-ssr-pwa-jest-cypress.git example
 $ cd example
 $ yarn
-# or if you want to install a database as well, eg:
-$ git checkout graphql-prisma && yarn && cd server && yarn
+# or if you want to install a server as well, do one or both of the following to pull the modules needed:
+$ yarn init:feathers
+$ yarn init:graphql
+
 ```
 
 ## Get to work

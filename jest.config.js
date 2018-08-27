@@ -48,6 +48,8 @@ module.exports =
     'moduleNameMapper': {
       'src/components/([^\\.]*).vue$': '<rootDir>/src/components/$1.vue',
       'src/components/([^\\.]*)$': '<rootDir>/src/components/$1.js',
+      'server-feathers/src/([^\\.]*)$': '<rootDir>/server-feathers/src/$1.js',
+      'server-graphql/src/([^\\.]*)$': '<rootDir>/server-graphql/src/$1.js',
       '^vue$': 'vue/dist/vue.common.js',
       'src/([^\\.]*)$': '<rootDir>/src/$1.js',
       'src/([^\\.]*).vue$': '<rootDir>/src/$1.vue',

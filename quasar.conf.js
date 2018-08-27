@@ -8,7 +8,6 @@ module.exports = function (ctx) {
       'i18n',
       'axios',
       'feathers-auth',
-      'vuelidate'
       'vuelidate',
       'apollo'
     ],
