@@ -1,0 +1,13 @@
+mutation {
+  first: createLink(data: {
+    name: "Google"
+    url: "https://google.fr",
+    icon: "fab fa-google"
+  }) { id }
+
+  second: createLink(data: {
+    name: "Stack Overflow"
+    url: "https://stackoverflow.com",
+    icon: "fab fa-stack-overflow"
+  }) { id }
+}

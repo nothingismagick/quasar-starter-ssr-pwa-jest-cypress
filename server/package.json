@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "scripts": {
+    "serve:graphql": "nodemon src/index.js",
+    "deploy:graphql": "pm2 start src/index.js --name quasar-graphql",
+    "debug": "nodemon --inspect src/index.js"
+  },
+  "nodemonConfig": {
+    "exec": "node -r dotenv/config",
+    "watch": "src",
+    "ext": "js,graphql"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.16.1",
+    "prisma-binding": "^2.1.4"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "graphql-cli": "^2.16.5",
+    "nodemon": "^1.18.3",
+    "prisma": "^1.14.2"
+  },
+  "license": "MIT"
+}
