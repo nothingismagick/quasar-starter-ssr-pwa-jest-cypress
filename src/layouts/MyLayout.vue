@@ -45,7 +45,8 @@ export default {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
       title: 'SSR starter with Jest and Cypress',
-      description: 'A starter kit for building a testing rig'
+      description: 'A starter kit for building a testing rig',
+      links: ''
     }
   },
   apollo: {

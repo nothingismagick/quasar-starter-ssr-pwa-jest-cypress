@@ -1,6 +1,5 @@
 ![](docs/starter_splash.png)
 
-
 Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid - with rigged and ready to extend DB server. Also possible to be used for SPA development or without SSR.
 
 #### Compatiblity
@@ -9,11 +8,21 @@ This repository uses the latest known module resources known to work with:
 ```
   quasar-cli                    0.17.13
   quasar-framework              0.17.10
+  @babel/insanity               7.0.0-beta.54
 ``` 
-
 
 #### :fire: WARNING! :fire:
 >Using this starter assumes familiarity with the command line, git, node, vue, quasar and for the love of your sanity if you do not understand HTML, CSS or JS - then this is going to be much too complicated for you.
+ 
+## Preface
+There are many ways to run with Quasar. One of the simplest is to use SSR, which is the way we have it setup by default. This means you will have a node server pre-hydrating your vue files and passing that to the browser. SSR, by nature, is complicated to use when you have to pass things like authentication tokens.
+
+One way to pass these tokens is using feathers, which we have pre-rigged for you. Feathers uses websockets to communicate with the backend, and also provides you with a server for all of your static assets. However building your complete project each time you want to check something is rather time-consuming, which is why this starter is rigged for you to run a PWA dev server and use that to communicate with the feathers backend. Feathers is notoriously complicated to get working right, which is why we have provided extra unit tests to make sure it is working properly.
+
+If you need more than just authentication - i.e. centralized data mutations, then you will probably be interested in looking into the schema based GraphQL and Prisma deployment. This is also available and can be used with or without feathers.
+
+Our current (opinionated) recommendation if you want the whole kitchen sink, is to serve the PWA with feathers (that also provides authentication) and use GraphQL for your data. But you will have to uncomment lines 12 and 13 in quasar.conf.js - it is a lot to ask, and the rest of the setup is also slightly complicated, but anyway - you are a professional.
+ 
  
  **System prerequisites:**
 - pretested on windows and mac
@@ -28,22 +37,20 @@ Clone this repo:
 ```bash
 $ git clone git@github.com:nothingismagick/quasar-starter-ssr-pwa-jest-cypress.git example
 $ cd example
-$ yarn
-# or if you want to install a server as well, do one or both of the following to pull the modules needed:
-$ yarn init:feathers
-$ yarn init:graphql
-
+$ yarn init:kitchensink
 ```
 
 ## Get to work
 There are a number of scripts available in the `/package.json` file that should make your life a little easier when working. Of course normal CLI commands like `quasar dev` will still work, but power users of quasar swear by script invocation - especially if you plan to use a CI pipeline.
 
-## Backend
+## Backend servers
 We will maintain a number of branches in this repository that  allow you to choose the backend that you prefer:
-- GraphQL with Prisma and Apollo (Working)
-- Firebase (Coming Soon)
-- hypertable (Help Wanted)
-- pouchdb (Help Wanted)
+- [x] SSR 
+- [x] GraphQL with Prisma and Apollo
+- [x] Feathers Server with Authentication
+- [ ] Firebase (Coming Soon)
+- [ ] hypertable (Help Wanted)
+- [ ] pouchdb (Help Wanted)
 
 ### GraphQL
 If you have never used GraphQL before, then we recommend that you [follow this entire tutorial](https://www.howtographql.com/graphql-js/0-introduction/). We are using the free service provided by Prisma to create a dynamic database proxy and running a local graphql-yoga server that is based on express and apollo.
@@ -73,25 +80,52 @@ $ yarn db:graphql:deploy
 ```
 
 #### Important files
-- server/database/datamodel.graphql
-- server/database/seed.graphql
+- server-graphql/database/datamodel.graphql
+- server-graphql/database/seed.graphql
 - src/layouts/MyLayout.vue
 
-## Developing
+### Feathers
+To get feathers up and running, you just need to:
+```bash
+$ yarn serve:feathers
+```
+
+Of course you don't have any users set up, so you will have to set them:
+```
+$ curl 'http://localhost:3030/usn' --data-binary '{ "email": "feathers@example.com", "password": "secret" }'
+```
+
+> When you restart feathers it will lose this state, so you will have to figure out a way to persist it. Why not GraphQL? Furthermore, this is not a production ready feathers instance. You will have to do a lot of tuning to get it ready for primetime. If you do improve upon it, why not make a PR?
+
+#### Important files
+- /config/dev.json
+- /test/jest/server-feathers/services/users.test.js
+- /test/jest/server-feathers/app.test.js
+
+## Put it all together
 To make an ssr version of this starter with hot-reloading webpack at `localhost:8000`, do this:
 ```bash
+# choose your flavour
+$ yarn dev:spa
+$ yarn dev:pwa
 $ yarn dev:ssr
 ```
 
-Please note, this script will increase the amount of memory available to the node process - so make sure that you really can afford to give node 4GB of memory. To read more about why, please visit [this Github issue](https://github.com/quasarframework/quasar-cli/issues/122).
+Now start the feathers authentication server
+```bash
+$ yarn serve:feathers
+# make a user
+$ curl 'http://localhost:3030/usn' --data-binary '{ "email": "feathers@example.com", "password": "secret" }'
+```
 
-Also, there have been recent reports that running webpack dev scripts (or any webpack-based commands for that matter) in the IDE can lead to 3x slower initial build time, which likely has to do with the way that Webstorm and VSCode attempt to register new files in the root.
-
+Now serve the GraphQL
+```bash
+$ yarn db:graphql:serve
+```
 
 ### Meta Plugin
 
 There is an example integration of the Quasar Meta Plugin available in `/src/layouts/MyLayout.vue`. It uses some of the examples from the quasar docs, most notably the `titleTemplate`.
-
 
 ### Linting and code style
 This project assumes Standard style of JS. Also it uses an opinionated eslint caching and fixing strategy that you can change in `quasar.conf.js` if it becomes troublesome. There is also a helpful script that can sometimes save your life:
@@ -239,10 +273,9 @@ deploy:ssr-pm2_kill
 
 ## // TODO:
 - [ ] vuex example binding
-- [ ] firebase 
-- [ ] hypertable
-- [ ] pouchdb using https://github.com/pubkey/rxdb?
 - [ ] docker setup for production use
+- [ ] unify .env and feathers config
+- [ ] cleanup
 
 #### Final Notes:
 Here is the redacted results of running `quasar info` in the project root at the time of the generation of this starter:
@@ -263,15 +296,18 @@ Important local packages
   vue                           2.5.17 
   vue-router                    3.0.1   
   vuex                          3.0.1  
-  @babel/core                   7.0.0-rc.2      
+  @babel/core                   7.0.0-beta.54      
   webpack                       4.16.5  
   webpack-dev-server            3.1.5   
   workbox-webpack-plugin        3.4.1   
   register-service-worker       1.4.1   
 ```
+
 #### Contributors
-@nothingismagick  
-@kevinmarrec
+@nothingismagick (rigging, testing, docs) 
+@kevinmarrec (graphql)
+@borutjures (feathers-auth)
+@adampurdy (firebase)
 
 #### License
 ©2018 to Present - D.C. Thompson and Razvan Stoenescu

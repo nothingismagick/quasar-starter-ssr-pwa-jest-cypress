@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.742cee84e1cebeb9e784f3ca20f2d6d1.js"
+  "/precache-manifest.1f0c81a65b2c39d976212e834ff938ed.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "starter"});
+workbox.core.setCacheNameDetails({prefix: "ssr-starter-kit"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to

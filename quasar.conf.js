@@ -7,9 +7,10 @@ module.exports = function (ctx) {
     plugins: [
       'i18n',
       'axios',
-      'feathers-auth',
       'vuelidate',
-      'apollo'
+      // using either of the following requires starting the respective servers
+      // 'feathers-auth', // uncomment to attach to the backend feathers-auth service
+      // 'apollo' // uncomment to attach to the backend GraphQL server
     ],
     css: [
       'app.styl'

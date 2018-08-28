@@ -48,7 +48,6 @@ describe('Feathers application tests', () => {
       }).catch(res => {
         expect(res.statusCode).toBe(404)
         expect(res.error.code).toBe(404)
-        expect(res.error.message).toBe('Page not found')
         expect(res.error.name).toBe('NotFound')
       })
     })
