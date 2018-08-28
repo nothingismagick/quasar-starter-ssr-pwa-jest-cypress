@@ -56,6 +56,7 @@ module.exports =
       '(.*)/(.*).vue$': '<rootDir>/src/$1/$2.vue',
       'quasar': 'quasar-framework/dist/umd/quasar.mat.umd.min.js'
     },
+    'resolver': null,
     'transformIgnorePatterns': [
       'node_modules/core-js',
       'node_modules/babel-runtime',
