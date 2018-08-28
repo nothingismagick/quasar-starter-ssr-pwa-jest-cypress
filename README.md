@@ -1,6 +1,6 @@
 ![](docs/starter_splash.png)
 
-Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid - with rigged and ready to extend DB server. Also possible to be used for SPA development or without SSR.
+Accelerated starter kit for building a quasar 0.17 SSR PWA Hybrid - with rigged and ready to extend GraphQL server and feathers authentication. Also possible to be used for SPA development or without SSR.
 
 #### Compatiblity
 This repository uses the latest known module resources known to work with:
