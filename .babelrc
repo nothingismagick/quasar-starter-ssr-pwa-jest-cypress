@@ -1,6 +1,6 @@
 {
   "env": {
-    "test": {
+    "dev": {
       "presets": [    [
         "@babel/preset-env", {
           "modules": "commonjs",
