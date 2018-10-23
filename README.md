@@ -56,8 +56,6 @@ We will maintain a number of branches in this repository that  allow you to choo
 If you have never used GraphQL before, then we recommend that you [follow this entire tutorial](https://www.howtographql.com/graphql-js/0-introduction/). We are using the free service provided by Prisma to create a dynamic database proxy and running a local graphql-yoga server that is based on express and apollo.
 
 #### Prisma Cloud Setup
-First of all, make sure that you are on the right branch. You should have checked out `graphql-prisma`.
-
 To get this all up and running, you will first need to create a free account at Prisma Cloud: https://app.prisma.io/login (You can use your Github account to make it easier.) After you have logged in, go to the `settings` page and copy the "Slug" - you will need this for the `.env` file you are about to make.
 
 Copy or rename the file `/server/.env.template` to `/server/.env` and replace `YOUR_ACCOUNT_SLUG` with the slug you were given by the prisma app.
