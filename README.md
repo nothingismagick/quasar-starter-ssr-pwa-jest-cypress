@@ -95,6 +95,11 @@ $ curl 'http://localhost:3030/users/' -H 'Content-Type: application/json' --data
 
 > When you restart feathers it will lose this state, so you will have to figure out a way to persist it. Why not GraphQL? Furthermore, this is not a production ready feathers instance. You will have to do a lot of tuning to get it ready for primetime. If you do improve upon it, why not make a PR?
 
+If you are having problems, please check out the feathers branch and use these instructions:
+
+- https://github.com/nothingismagick/quasar-starter-ssr-pwa-jest-cypress/tree/master/server-feathers
+
+
 #### Important files
 - /config/dev.json
 - /test/jest/server-feathers/services/users.test.js
