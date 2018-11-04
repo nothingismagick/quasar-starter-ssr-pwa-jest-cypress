@@ -90,7 +90,7 @@ $ yarn serve:feathers
 
 Of course you don't have any users set up, so you will have to set them:
 ```
-$ curl 'http://localhost:3030/usn' --data-binary '{ "email": "feathers@example.com", "password": "secret" }'
+$ curl 'http://localhost:3030/users/' -H 'Content-Type: application/json' --data-binary '{ "email": "feathers@example.com", "password": "secret" }'
 ```
 
 > When you restart feathers it will lose this state, so you will have to figure out a way to persist it. Why not GraphQL? Furthermore, this is not a production ready feathers instance. You will have to do a lot of tuning to get it ready for primetime. If you do improve upon it, why not make a PR?
@@ -113,7 +113,7 @@ Now start the feathers authentication server
 ```bash
 $ yarn serve:feathers
 # make a user
-$ curl 'http://localhost:3030/usn' --data-binary '{ "email": "feathers@example.com", "password": "secret" }'
+$ curl 'http://localhost:3030/users/' -H 'Content-Type: application/json' --data-binary '{ "email": "feathers@example.com", "password": "secret" }'
 ```
 
 Now serve the GraphQL
